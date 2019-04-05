@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+//LAS IMPORTACIONES SE HACEN AUTOMATICAMENTE SIEMPRE QUE EL PROYECTO TENGA LA LIBRERIA NECESARIA CARGADA
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +17,7 @@ import dominio.Servicio;
 public class ClienteDAO implements ClienteDAOInterface {
 
 	////////////////////////////////////////////////////////////////
-//Esta clase ser· un bean que creara spring desde si archivo de configuraciÛn
+//Esta clase ser√° un bean que creara spring desde si archivo de configuraci√≥n
 //todo clase que pueda tratarse como un bean (Clase POJO de java) y para ello es 
 //necesario tener obviamente sus atributos (Variables) y los getter y setter para la obtencion y establecimiento 
 //de las variables de dicha clase y un contructor sin parametros
@@ -41,12 +42,12 @@ public class ClienteDAO implements ClienteDAOInterface {
 		try {
 
 			// creamos la sentencia sql que ejecurara jdbctemplate
-			// el ? ocupar· el valor de la variable que especifiquemos como parametro en
+			// el ? ocupar√° el valor de la variable que especifiquemos como parametro en
 			// jdbcTemplate.update
 			// el metodo .update se usa para ejecutar sentencias SQL que modifiquen datos de
 			// una tabla ya sea
 			// borrar, insertar o modificar
-			String sentenciaSQL = "DELETE * FROM tclientes WHERE IdCliente=?";
+			//String sentenciaSQL = "INSERT INTO tclientes VALUES";
 
 			// pasamos como parametro el valor de ?
 			jdbcTemplate.update(sentenciaSQL, c.getIdCliente());
@@ -54,7 +55,7 @@ public class ClienteDAO implements ClienteDAOInterface {
 		} catch (DataAccessException e) {
 			// usamos DataAccessException como clase a la hora de capturar las excepciones
 			// de acceso a datos en este caso
-			// y se una excepciÛn salta devolvemos el false para indicar el error del metodo
+			// y se una excepci√≥n salta devolvemos el false para indicar el error del metodo
 			return false;
 
 		}
@@ -68,12 +69,13 @@ public class ClienteDAO implements ClienteDAOInterface {
 		
 		
 
-			// creamos la sentencia sql que ejecurara jdbctemplate
-			// el ? ocupar· el valor de la variable que especifiquemos como parametro en
-			// jdbcTemplate.update
-			// el metodo .update se usa para ejecutar sentencias SQL que modifiquen datos de
-			// una tabla ya sea
-			// borrar, insertar o modificar
+			// DE IGUAL MANERA CREAMOS UNA SENTENCIA SQL PARA DAR DE BAJA UN CLIENTE
+			//ANTONIO DIJO QUE AL BORRAR UN CLIENTE HAY QUE DAR PRIMERO DE BAJA LOS REGISTRO DE LAS TABLAS DEPENDIENTES 
+			//DE LA ENTIDAD FUERTE EN ESTE CASO AL CREAR UN SERVICIO (ENTIDAD DEBIL) ES OBLIGATORIO QUE TENGA UN CLIENTE YA QUE EN LA TABLA
+			//LOS SERVICIOS TIENEN UNA CLAVE FORANEA (UN ID DE CLIENTE) Y PARA EVITAR ERRORES EN LA BASE DE DATOS DE LA INTEGRIDAD REFERENCIAL
+			//HAY QUE DAR DE BAJA PRIMERO LAS ENTIDADES DEBILES PERO YO HE PREFERIDO DEJAS QUE ESO SE HAGA EN LA CLASE MODELO
+			//Y QUE LOS DAO DE LAS ENTIDADES TANSOLO MANEJEN LOS METODOS CRUD DE LA ENTIDAD Y EN MODELO.JAVA AHI DESARROLLO LA LOGIGA DE LOS METODOS
+			//QUE OPERAN EN LA BASE DE DATOS
 			String sentenciaSQL = "DELETE * FROM tclientes WHERE IdCliente=?";
 
 			// pasamos como parametro el valor de ?
