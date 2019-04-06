@@ -14,7 +14,7 @@ public interface ClienteDAOInterface {
 	public void baja(int idCliente);
 	public void modificacion(Cliente c);
 	public Cliente consulta(int idCliente);
-	public List<Cliente> consulta();
+	public List<Cliente> consultaAll();
 	
 }
 

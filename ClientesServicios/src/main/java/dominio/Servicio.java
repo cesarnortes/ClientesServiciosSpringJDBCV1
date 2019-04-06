@@ -6,21 +6,26 @@ public class Servicio {
 
 	private int idServicio; 
 	private Cliente cliente;
-    private String concepto;
+    private String descripcion;
 	private Date fecha;
-	private Double importe;
 	
 	
 	public Servicio() {}
 
-	public Servicio(Cliente cliente, String concepto,Date fecha, Double importe) {
+	public Servicio(Cliente cliente, String descripcion,Date fecha, Double importe) {
 		super();
 		
 		this.cliente = cliente;
-        this.concepto = concepto;
 		this.fecha = fecha;
-		this.importe = importe;
-		
+ 		
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public int getIdServicio() {
@@ -47,26 +52,11 @@ public class Servicio {
 		this.fecha = fecha;
 	}
 
-	public Double getImporte() {
-		return importe;
-	}
-
-	public void setImporte(Double importe) {
-		this.importe = importe;
-	}
-
-	public String getConcepto() {
-		return concepto;
-	}
-
-	public void setConcepto(String concepto) {
-		this.concepto = concepto;
-	}
+   
 
 	@Override
 	public String toString() {
-		return "Servicio [idServicio=" + idServicio + ", idCliente=" + cliente + ", Fecha=" + fecha + ", Importe="
-				+ importe + ", descripcion=" + concepto + "]";
+		return "Servicio [idServicio=" + idServicio + ", idCliente=" + cliente + ", Fecha=" + fecha +"]";
 	}
 	
 	

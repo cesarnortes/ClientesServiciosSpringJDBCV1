@@ -8,17 +8,15 @@ public class Cliente {
 	private int idCliente; 
 	private String nombre;
 	private String telefono;
-	private String email;
 	List<Servicio> listaServicios = new ArrayList<Servicio>();
 	
 	public Cliente() {}
 
-	public Cliente(String nombre, String telefono, String email, List<Servicio> listaServicios) {
+	public Cliente(String nombre, String telefono, List<Servicio> listaServicios) {
 
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.email = email;
-		this.listaServicios=listaServicios;
+ 		this.listaServicios=listaServicios;
 	}
 
 	public int getIdCliente() {
@@ -45,13 +43,7 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
 	public List<Servicio> getListaServicios(){
 		return listaServicios;
@@ -63,8 +55,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email
-				+ ", listaServicios=" + listaServicios + "]";
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", telefono=" + telefono +", listaServicios=" + listaServicios + "]";
 	}
 	
 }
