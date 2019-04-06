@@ -15,22 +15,26 @@ import org.springframework.transaction.annotation.Transactional;
 import dominio.Cliente;
 import dominio.Servicio;
 
-//@Repositori incida a Spring que esta clase contiene los metodo necesarios para operar con la base de datos
+//@Repository incida a Spring que esta clase contiene los metodo necesarios para operar con la base de datos
 //@Transactional indica que los metodos de esta clase debe tratarse como transaciones
-//donde en case de haber varias opraciones en cadena si una falla desiciera las demas operacioes anteriores
+//donde en caso de haber varias opraciones en cadena si una falla deshiciera las demas operacioes anteriores
 //para no dejar una operacion grande a medias, en resumen o se hace todo o no se hace nada
 @Repository
 @Transactional
 public class ClienteDAO implements ClienteDAOInterface {
-
+//implementamos siempre una interfaz con los metodos CRUD en los dao
 	////////////////////////////////////////////////////////////////
-//Esta clase será un bean que creara spring desde si archivo de configuración
+//Esta clase sera un bean que creara spring desde si archivo de configuraciÃ³n
 //todo clase que pueda tratarse como un bean (Clase POJO de java) y para ello es 
 //necesario tener obviamente sus atributos (Variables) y los getter y setter para la obtencion y establecimiento 
 //de las variables de dicha clase y un contructor sin parametros
 //por defecto todas las clases heredan un contructor o puedes crearlo
 	///////////////////////////////////////////////////////////////
 
+	//esta variable cargara los datos necesarios en el archivo de configuracion
+	//matiendo el codigo fuente del dao lo mas independiente posible
+	//sobre el tipo de base de datos, su usuario, su password, su direccion, sea cual sea los datos de configuracion
+	//se ponen aparte para no alterar un codigo fuente de calidad
 	JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbctemplate() {
@@ -50,7 +54,7 @@ public class ClienteDAO implements ClienteDAOInterface {
 		try {
 
 			// creamos la sentencia sql que ejecurara jdbctemplate
-			// el ? ocupará el valor de la variable que especifiquemos como parametro en
+			// el ? ocuparÃ¡ el valor de la variable que especifiquemos como parametro en
 			// jdbcTemplate.update
 			// el metodo .update se usa para ejecutar sentencias SQL que modifiquen datos de
 			// una tabla ya sea
@@ -64,7 +68,7 @@ public class ClienteDAO implements ClienteDAOInterface {
 		} catch (DataAccessException e) {
 			// usamos DataAccessException como clase a la hora de capturar las excepciones
 			// de acceso a datos en este caso
-			// y se una excepción salta devolvemos el false para indicar el error del
+			// y se una excepciÃ³n salta devolvemos el false para indicar el error del
 			// metodo
 			return false;
 
@@ -104,7 +108,7 @@ public class ClienteDAO implements ClienteDAOInterface {
 	}
 
 	// el parametro readOnly=true de la anotacion indica que el metodo
-	// solo va a leer informaci�n de la base de datos
+	// solo va a leer información de la base de datos
 	@Transactional(readOnly=true)
 	public Cliente consulta(int idCliente) {
 		// TODO Auto-generated method stub
