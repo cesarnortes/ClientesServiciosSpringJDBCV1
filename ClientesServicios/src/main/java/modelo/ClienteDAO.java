@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
+
 import dominio.Cliente;
 import dominio.Servicio;
 
@@ -112,15 +114,18 @@ public class ClienteDAO implements ClienteDAOInterface {
 	@Transactional(readOnly=true)
 	public Cliente consulta(int idCliente) {
 		// TODO Auto-generated method stub
-		
-		
-		return null;
-	}
+				String sql = "select * from tclientes WHERE IdCliente=?";
+				//en  new Object[] { idCliente } especificamos el valor del parametro de IdCliente=?
+				Cliente cliente = (Cliente) jdbcTemplate.queryForObject(sql, new Object[] { idCliente }, new ClienteMapper());
+				return cliente;
+ 	}
 
 	 
 	@Transactional(readOnly=true)
 	public List<Cliente> consultaAll() {
-		String sql="select*from tclientes";
+		String sql="select * from tclientes";
+		
+		//jdbcTemplate.query devulve un objeto List<> del tipo de objeto que creas
 		List<Cliente> todosClientes= jdbcTemplate.query(sql, new ClienteMapper());
 		return todosClientes;
 	}
