@@ -24,7 +24,7 @@ import dominio.Servicio;
 public class ClienteDAO implements ClienteDAOInterface {
 //implementamos siempre una interfaz con los metodos CRUD en los dao
 	////////////////////////////////////////////////////////////////
-//Esta clase sera un bean que creara spring desde si archivo de configuraciÃ³n
+//Esta clase sera un bean que creara spring desde si archivo de configuracion
 //todo clase que pueda tratarse como un bean (Clase POJO de java) y para ello es 
 //necesario tener obviamente sus atributos (Variables) y los getter y setter para la obtencion y establecimiento 
 //de las variables de dicha clase y un contructor sin parametros
