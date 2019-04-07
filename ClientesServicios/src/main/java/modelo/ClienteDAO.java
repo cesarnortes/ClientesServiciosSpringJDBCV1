@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dominio.Cliente;
 import dominio.Servicio;
 
-//@Repository incida a Spring que esta clase contiene los metodo necesarios para operar con la base de datos
+//@Repository indica a Spring que esta clase contiene los metodo necesarios para operar con la base de datos
 //@Transactional indica que los metodos de esta clase debe tratarse como transaciones
 //donde en caso de haber varias opraciones en cadena si una falla deshiciera las demas operacioes anteriores
 //para no dejar una operacion grande a medias, en resumen o se hace todo o no se hace nada
